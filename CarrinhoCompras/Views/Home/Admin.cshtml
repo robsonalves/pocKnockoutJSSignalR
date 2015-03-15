@@ -1,0 +1,40 @@
+﻿    <div class="row-fluid">
+        <div class="span12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Cliente</th>
+                        <th>Valor da compra</th>
+                        <th>ItensCompra</th>
+                        <th>Aprovado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: Ordems">
+                    <tr>
+                        <td data-bind="text: id"></td>
+                        <td data-bind="text: nomeCliente"></td>
+                        <td data-bind="text: ordemCompraTotal"></td>
+                        <td>
+                            <ul data-bind="foreach: livros">
+                                <li> <span data-bind="text: titulo"></span> - <span data-bind="text: quantidadeItensSelecionados"></span> itens</li>
+                            </ul>
+                        </td>
+                        <td data-bind="text: aprovadaCompra()"></td>
+                        <td>
+                            <button class="btn btn-success" type="button" data-bind='click: $parent.AdminTools.aprovaPedido, disable: aprovadaCompra()'>Confirmar compra</button>
+                            <button class="btn btn-danger" type="button" data-bind='click: $parent.AdminTools.negarPedido, disable: !aprovadaCompra()'>Rejeitar pedido</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/jquery.signalR-1.0.0.js"></script>
+    <script type="text/javascript" src="~/signalr/hubs"></script>
+    <script type="text/javascript" src="~/Scripts/common.js"></script>
+    <script type="text/javascript" src="~/Scripts/admin.js"></script>
+}
