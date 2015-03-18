@@ -9,8 +9,7 @@ namespace CarrinhoCompras.Controllers
     {
         private readonly IRepositorio<Livro> _repositorio;
 
-        public AdminController() : this(new RepositorioMemoria<Livro>())
-        {}
+        public AdminController() : this(new RepositorioMemoria<Livro>()){}
 
         public AdminController(IRepositorio<Livro> repositorio)
         {
